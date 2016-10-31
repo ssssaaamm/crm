@@ -20,8 +20,10 @@ public class Usuario extends Model{
 	@Constraints.Required(message="Debe ingresar el nombre")
 	public String nombre;
 
-	@Constraints.Required(message="Debe seleccionar")
+	@Constraints.Required(message="Debe seleccionar su genero")
 	public int genero;
+
+	public String telefono;
 
 	@Constraints.Required(message="Debe ingresar su correo electronico")
 	@Constraints.Email
@@ -33,6 +35,9 @@ public class Usuario extends Model{
 	@Constraints.Required(message="Debe ingresar el password")
 	public String password;
 
+	@OneToOne
+	public Tarjeta tarjeta;
+
 	@ManyToOne
 	public TipoUsuario tipo;
 
@@ -41,6 +46,12 @@ public class Usuario extends Model{
 
 	@OneToMany(mappedBy="cliente")
 	public List<Compra> compras;
+
+	@OneToMany(mappedBy="agente")
+	public List<Incidencia> resueltas;
+
+	@OneToMany(mappedBy="cliente")
+	public List<Incidencia> creadas;
 	
     public static Finder<Long, Usuario> find = new Finder<Long,Usuario>(Usuario.class);
 

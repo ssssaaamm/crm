@@ -47,10 +47,6 @@ public class Oferta extends Model{
 
   	//FIN CRITERIOS DE APLICACION DE LA OFERTA
 
-
-
-  	
-
     public static Finder<Long, Oferta> find = new Finder<Long,Oferta>(Oferta.class);
 
 }

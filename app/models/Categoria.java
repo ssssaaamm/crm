@@ -38,4 +38,14 @@ public class Categoria extends Model{
 
     public static Finder<Long, Categoria> find = new Finder<Long,Categoria>(Categoria.class);
 
+
+    public static Map<String,String> options(){
+    	LinkedHashMap<String,String> opciones = new LinkedHashMap<String,String>();
+    	//List<Categoria> categorias=Categoria.find.orderBy("nombre").findList();
+    	for(Categoria c : Categoria.find.orderBy("nombre").findList()){
+    		opciones.put(c.id.toString(), c.nombre);
+    	}
+    	return opciones;
+    }
+
 }

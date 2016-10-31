@@ -19,6 +19,16 @@ create table compra (
   constraint pk_compra primary key (id)
 );
 
+create table incidencia (
+  id                            bigint auto_increment not null,
+  problema                      varchar(255),
+  resolucion                    varchar(255),
+  cerrada                       tinyint(1) default 0,
+  agente_id                     bigint,
+  cliente_id                    bigint,
+  constraint pk_incidencia primary key (id)
+);
+
 create table linea_oferta (
   id                            bigint auto_increment not null,
   oferta_id                     bigint,
@@ -78,6 +88,8 @@ create table tarjeta (
   id                            bigint auto_increment not null,
   numero                        varchar(255),
   saldo                         double,
+  owner_id                      bigint,
+  constraint uq_tarjeta_owner_id unique (owner_id),
   constraint pk_tarjeta primary key (id)
 );
 
@@ -94,10 +106,13 @@ create table usuario (
   codigo                        varchar(255),
   nombre                        varchar(255),
   genero                        integer,
+  telefono                      varchar(255),
   email                         varchar(255),
   username                      varchar(255),
   password                      varchar(255),
+  tarjeta_id                    bigint,
   tipo_id                       bigint,
+  constraint uq_usuario_tarjeta_id unique (tarjeta_id),
   constraint pk_usuario primary key (id)
 );
 
@@ -109,6 +124,12 @@ create table usuario_categoria (
 
 alter table compra add constraint fk_compra_cliente_id foreign key (cliente_id) references usuario (id) on delete restrict on update restrict;
 create index ix_compra_cliente_id on compra (cliente_id);
+
+alter table incidencia add constraint fk_incidencia_agente_id foreign key (agente_id) references usuario (id) on delete restrict on update restrict;
+create index ix_incidencia_agente_id on incidencia (agente_id);
+
+alter table incidencia add constraint fk_incidencia_cliente_id foreign key (cliente_id) references usuario (id) on delete restrict on update restrict;
+create index ix_incidencia_cliente_id on incidencia (cliente_id);
 
 alter table linea_oferta add constraint fk_linea_oferta_oferta_id foreign key (oferta_id) references oferta (id) on delete restrict on update restrict;
 create index ix_linea_oferta_oferta_id on linea_oferta (oferta_id);
@@ -137,6 +158,10 @@ create index ix_producto_join_oferta_producto_id on producto_join_oferta (produc
 alter table producto_join_oferta add constraint fk_producto_join_oferta_oferta_id foreign key (oferta_id) references oferta (id) on delete restrict on update restrict;
 create index ix_producto_join_oferta_oferta_id on producto_join_oferta (oferta_id);
 
+alter table tarjeta add constraint fk_tarjeta_owner_id foreign key (owner_id) references usuario (id) on delete restrict on update restrict;
+
+alter table usuario add constraint fk_usuario_tarjeta_id foreign key (tarjeta_id) references tarjeta (id) on delete restrict on update restrict;
+
 alter table usuario add constraint fk_usuario_tipo_id foreign key (tipo_id) references tipo_usuario (id) on delete restrict on update restrict;
 create index ix_usuario_tipo_id on usuario (tipo_id);
 
@@ -151,6 +176,12 @@ create index ix_usuario_categoria_categoria on usuario_categoria (categoria_id);
 
 alter table compra drop foreign key fk_compra_cliente_id;
 drop index ix_compra_cliente_id on compra;
+
+alter table incidencia drop foreign key fk_incidencia_agente_id;
+drop index ix_incidencia_agente_id on incidencia;
+
+alter table incidencia drop foreign key fk_incidencia_cliente_id;
+drop index ix_incidencia_cliente_id on incidencia;
 
 alter table linea_oferta drop foreign key fk_linea_oferta_oferta_id;
 drop index ix_linea_oferta_oferta_id on linea_oferta;
@@ -179,6 +210,10 @@ drop index ix_producto_join_oferta_producto_id on producto_join_oferta;
 alter table producto_join_oferta drop foreign key fk_producto_join_oferta_oferta_id;
 drop index ix_producto_join_oferta_oferta_id on producto_join_oferta;
 
+alter table tarjeta drop foreign key fk_tarjeta_owner_id;
+
+alter table usuario drop foreign key fk_usuario_tarjeta_id;
+
 alter table usuario drop foreign key fk_usuario_tipo_id;
 drop index ix_usuario_tipo_id on usuario;
 
@@ -191,6 +226,8 @@ drop index ix_usuario_categoria_categoria on usuario_categoria;
 drop table if exists categoria;
 
 drop table if exists compra;
+
+drop table if exists incidencia;
 
 drop table if exists linea_oferta;
 
