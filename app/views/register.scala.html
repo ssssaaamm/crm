@@ -1,4 +1,4 @@
-@(tarjeta_form: Form[Tarjeta], usuario_form: Form[Usuario])
+@(cliente_form: Form[Cliente])
 @import helper._
 
 @css = {
@@ -29,34 +29,44 @@
 								<p>@flash.get("wp")</p>
 							</div>
 						}
+						@if(flash.containsKey("registered")){
+							<div class="alert alert-success" role="alert">
+								<p>@flash.get("registered")</p>
+							</div>
+							<script>
+						        var timer = setTimeout(function() {
+						            window.location='@routes.HomeController.login'
+						        }, 5000);
+						    </script>
+						}
 						@form(action = routes.HomeController.register_post()){
 
 							<div class="form-group">
-								@inputText(usuario_form("nombre"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Juan Perez", '_label -> "Nombre: ")
+								@inputText(cliente_form("nombre"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Juan Perez", '_label -> "Nombre: ")
 	  						</div>
 
 	  						<div class="form-group">
-	  							@select(usuario_form("genero"), options=(Seq("1"->"Masculino", "2"->"Femenino")), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Elija su genero",'_label -> "Genero: ")
+	  							@select(cliente_form("genero"), options=(Seq("1"->"Masculino", "2"->"Femenino")), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Elija su genero",'_label -> "Genero: ")
 							</div>
 
 	  						<div class="form-group">
-								@inputText(usuario_form("email"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "juan.perez@dominio.com",'_label -> "Correo: ")
+								@inputText(cliente_form("email"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "juan.perez@dominio.com",'_label -> "Correo: ")
 	  						</div>
 
 	  						<div class="form-group">
-								@inputText(usuario_form("telefono"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "7859-8956",'_label -> "Telefono: ")
+								@inputText(cliente_form("telefono"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "7859-8956",'_label -> "Telefono: ")
 	  						</div>
 
 	  						<div class="form-group">
-								@inputText(tarjeta_form("numero"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "54953865-898",'_label -> "No. Tarjeta: ")
+								@inputText(cliente_form("tarjeta.numero"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "54953865-898",'_label -> "No. Tarjeta: ")
 	  						</div>
 
 							<div class="form-group">
-								@inputText(usuario_form("username"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "juanito89",'_label -> "Usuario: ")
+								@inputText(cliente_form("username"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "juanito89",'_label -> "Usuario: ")
 	  						</div>
 
 	  						<div class="form-group">
-								@inputText(usuario_form("password"),'type -> "password", '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Secreto123!#",'_label -> "Contrase;a: ")
+								@inputText(cliente_form("password"),'type -> "password", '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Secreto123!#",'_label -> "Contrase;a: ")
 	  						</div>
 
 	  						<div class="form-group">
@@ -65,7 +75,7 @@
 	  						</div>
 
 	  						<div class="form-group">
-	  							@select(usuario_form("categoria"), options(Categoria.options), '_showConstraints -> false ,'class -> "form-control selectpicker", 'multiple -> "true", 'placeholder -> "Intereses",'_label -> "Intereses: ")
+	  							@select(cliente_form("categorias"), options(Categoria.options), '_showConstraints -> false ,'class -> "form-control selectpicker", 'multiple -> "true", 'placeholder -> "Intereses",'_label -> "Intereses: ")
 	  						</div>
 
 	  						<input type = "submit" class="btn btn-primary form-control" value="Registrarme"/>

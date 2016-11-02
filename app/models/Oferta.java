@@ -42,8 +42,8 @@ public class Oferta extends Model{
 	public int compras_minimas;
 
 	//aqui si dejamos que se cree la tabla intermediaria por defecto
-  	@ManyToMany
-  	List<Categoria> categorias;
+  	@OneToMany(mappedBy="oferta")
+  	List<AplicacionOferta> aplicaciones_oferta;
 
   	//FIN CRITERIOS DE APLICACION DE LA OFERTA
 

@@ -25,11 +25,11 @@ public class Incidencia extends Model{
 	public boolean cerrada;
 
 	@ManyToOne
-	public Usuario agente;
+	public Empleado empleado;
 
 	@ManyToOne
-	public Usuario cliente;
+	public Cliente cliente;
 
-    public static Finder<Long, TipoUsuario> find = new Finder<Long,TipoUsuario>(TipoUsuario.class);
+    public static Finder<Long, Incidencia> find = new Finder<Long,Incidencia>(Incidencia.class);
 
 }

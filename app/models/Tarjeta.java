@@ -22,7 +22,7 @@ public class Tarjeta extends Model{
 	 public double saldo=100;
 
 	 @OneToOne
-	 public Usuario owner;
+	 public Cliente cliente;
 
      public static Finder<Long, Tarjeta> find = new Finder<Long,Tarjeta>(Tarjeta.class);
 

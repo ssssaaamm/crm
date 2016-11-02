@@ -1,6 +1,7 @@
 package models;
 
 import java.util.*;
+import java.io.File;
 import javax.persistence.*;
 
 import play.db.ebean.*;
@@ -33,6 +34,9 @@ public class Producto extends Model{
 
 	@ManyToOne
 	public Categoria categoria;
+
+	@Lob
+	public byte[] imagen;
 
     public static Finder<Long, Producto> find = new Finder<Long,Producto>(Producto.class);
 

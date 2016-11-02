@@ -1,0 +1,133 @@
+@(producto_form: Form[Producto])
+@import helper._
+
+@css = {
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap-table.css")">
+    <!--<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/btn-file.css")"> -->
+}
+@js={
+	<script src="@routes.Assets.versioned("javascripts/bootstrap-filestyle.min.js")" type="text/javascript"></script>
+ 	<script src="@routes.Assets.versioned("javascripts/bootstrap-table.js")" type="text/javascript"></script>
+}
+@administrador.base("Admin CRM","Productos","Gestion de productos","productos",css,js){
+
+
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar Producto</button>
+
+  	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Agregar nuevo producto</h4>
+				</div>
+				<div class="modal-body">
+
+
+
+					@form(action=routes.AdministradorController.producto_new()){
+                		 <div class="form-group">
+                		 	@inputText(producto_form("codigo"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Codigo del producto", '_label -> "Codigo de Producto: ")
+                		 </div>
+
+                		 <div class="form-group">
+                		 	@inputText(producto_form("nombre"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Nombre del producto", '_label -> "Nombe: ")
+                		 </div>
+
+                		 <div class="form-group">
+                		 	@inputText(producto_form("descripcion"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Descripcion del producto", '_label -> "Descripcion: ")
+                		 </div>
+
+                		 <div class="form-group">
+                		 	@inputText(producto_form("precio"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Precio en USD", '_label -> "Precio: ")
+                		 </div>
+
+	  					 <div class="form-group">
+								@inputText(producto_form("existencias"), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Cantidad en unidades",'_label -> "Cantidad: ")
+	  					 </div>
+
+	  					 <div class="form-group">
+	  							@select(producto_form("categoria"), options(Categoria.options), '_showConstraints -> false ,'class -> "form-control", 'placeholder -> "Categoria",'_label -> "Categoria: ")
+	  					 </div>
+
+	  					 <label for="imagen">Imagen: </label>
+	  					 <input type="file" name="imagen" id="imagen" class="filestyle" data-buttonText="Seleccione Imagen" data-buttonName="btn-primary" data-iconName="glyphicon glyphicon-picture">
+
+              		}
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+                	
+
+
+
+
+
+	<div class="table-responsive">
+		<div class="form-group pull-right">
+		<input type="text" class="search form-control" placeholder="Busqueda">
+	</div>
+	<span class="counter pull-right"></span>
+	<table class="table table-hover table-bordered results">
+		<thead>
+			<tr>
+				<th>Codigo</th>
+				<th class="col-md-5 col-xs-5">Nombre</th>
+				<th class="col-md-4 col-xs-4">Tipo</th>
+				<th class="col-md-3 col-xs-3">Telefono</th>
+				<th class="col-md-3 col-xs-3">Correo</th>
+				<th class="col-md-3 col-xs-3">Usuario</th>
+				<th class="col-md-3 col-xs-3 center-column">Editar</th>
+				<th class="col-md-3 col-xs-3 center-column">Eliminar</th>
+			</tr>
+			<tr class="warning no-result">
+				<td colspan="4"><i class="fa fa-warning"></i> No hay resultados</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>65498</td>
+				<td>Samuel Alexander</td>
+				<td>Administrador</td>
+				<td>54698465</td>
+				<td>samuel@@samuel.com</td>
+				<td>sn036156</td>
+				<td><a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-edit"></span> Editar</a></td>
+				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Eliminar</a></td>
+			</tr>
+			<tr>
+				<td>654686</td>
+				<td>Samuel Alexander</td>
+				<td>Administrador</td>
+				<td>54698465</td>
+				<td>samuel@@samuel.com</td>
+				<td>sn036156</td>
+				<td><a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-edit"></span> Editar</a></td>
+				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Eliminar</a></td>
+			</tr>
+			<tr>
+				<td>654</td>
+				<td>Ana Alexander</td>
+				<td>Administrador</td>
+				<td>54698465</td>
+				<td>samuel@@samuel.com</td>
+				<td>sn036156</td>
+				<td><a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-edit"></span> Editar</a></td>
+				<td><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Eliminar</a></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+}

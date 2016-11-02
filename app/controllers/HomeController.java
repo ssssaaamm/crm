@@ -3,8 +3,21 @@ package controllers;
 import play.*;
 import play.mvc.*;
 import play.data.*;
-import java.util.Map;
+import java.util.*;
+//import java.util.Map;
 //import static play.data.Form.*;
+
+
+
+import javax.persistence.*;
+
+import play.db.ebean.*;
+import play.data.format.*;
+import play.data.validation.*;
+
+import com.avaje.ebean.*;
+
+
 
 import views.html.*;
 
@@ -42,35 +55,105 @@ public class HomeController extends Controller {
     	//return redirect(routes.ClienteController.productos());
     }
 
+    public Result login_post(){
+
+        Map<String, String[]> values = request().body().asFormUrlEncoded();
+
+        String username=values.get("username")[0];
+        String password=values.get("password")[0];
+
+
+        Cliente c = Cliente.find.where().eq("username",username).findUnique();
+        Empleado e = Empleado.find.where().eq("username",username).findUnique();
+
+        if(c == null && e ==null ){
+            flash("no_registered","Usuario '"+username+"' no registrado");
+            return redirect(routes.HomeController.login());
+        }else{
+            if(c!=null){
+                if( c.password.equals(password) ){
+                    session("username",username);
+                    return redirect(routes.ClienteController.productos());
+                    //return ok("cliente registrado y password concuerda");
+                }else{
+                    flash("no_password","La contraseña es invalida");
+                    return redirect(routes.HomeController.login());
+                    //return ok("cliente registrado y password no concuerda");
+                }
+            }else{
+                if( e.password.equals(password) ){
+                    return ok("empleado registrado y password concuerda");
+                }else{
+                    return ok("empleado registrado y password no concuerda");
+                }
+            }
+        }
+
+        //return ok(login.render());
+
+        //session("conected","ssssaaamm");
+        //return redirect(routes.ClienteController.productos());
+    }
+
+
     public Result logout(){
     	session().clear();
     	return redirect(routes.HomeController.index());
     }
 
     public Result register(){
-        Form<Usuario> usuario_form = Form.form(Usuario.class);
-        Form<Tarjeta> tarjeta_form = Form.form(Tarjeta.class);
-    	return ok(register.render(tarjeta_form,usuario_form));
+        Form<Cliente> cliente_form = Form.form(Cliente.class);
+        //Form<Tarjeta> tarjeta_form = Form.form(Tarjeta.class);
+    	return ok(register.render(cliente_form));
     	//return redirect(routes.HomeController.index());
     }
 
 
     public Result register_post(){
-        Form<Usuario> usuario_form = Form.form(Usuario.class).bindFromRequest();
-        Form<Tarjeta> tarjeta_form = Form.form(Tarjeta.class).bindFromRequest();
+        //dos formas de obtener los datos del formulario
+        Form<Cliente> cliente_form = Form.form(Cliente.class).bindFromRequest();
         Map<String, String[]> values = request().body().asFormUrlEncoded();
-        if(usuario_form.hasErrors() || tarjeta_form.hasErrors() ){
-            if(usuario_form.get().password != values.get("password_confirm")[0]){
-                flash("wp","Passwords no coinciden");
-            }
-            return badRequest(register.render(tarjeta_form,usuario_form));
-        }
-        Usuario usuario=usuario_form.get();
-        Tarjeta tarjeta=tarjeta_form.get();
-        usuario.save();
-        tarjeta.owner=usuario;
+
+        //preparamos todo para guardar en la BD
+        Cliente cliente = cliente_form.get();
+        Tarjeta tarjeta = cliente.tarjeta;
+        ArrayList<Gusto> gustos = new ArrayList();
+
+        cliente.save();
         tarjeta.save();
-        return ok(register_success.render(usuario.username));
+
+
+        tarjeta.cliente=cliente;
+        cliente.tarjeta.id=tarjeta.id;
+
+
+        tarjeta.save();
+        cliente.save();
+
+
+
+        for( int i =0; i<values.get("categorias[]").length; i++ ){
+            Gusto g= new Gusto();
+            g.categoria=Categoria.find.where().idEq(Long.valueOf(values.get("categorias[]")[i])).findUnique();
+            g.cliente=cliente;
+            g.save();
+        }
+
+
+
+
+
+        // if(usuario_form.hasErrors() || tarjeta_form.hasErrors() ){
+        //     // if(usuario_form.get().password != values.get("password_confirm")[0]){
+        //     //     flash("wp","Passwords no coinciden");
+        //     // }
+        //     return badRequest(register.render(tarjeta_form,usuario_form));
+        // }
+
+        flash("registered","Usuario registrado con exito!. En 5 seg sera redirigido...");
+        return redirect(routes.HomeController.register());
+
+        //return ok(register_success.render(usuario.username));
     }
 
     public Result about(){

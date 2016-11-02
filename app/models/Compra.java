@@ -21,7 +21,7 @@ public class Compra extends Model{
 	public double total;
 
 	@ManyToOne
-	public Usuario cliente;
+	public Cliente cliente;
 
 	//lineas de productos
 	@OneToMany(mappedBy="compra")

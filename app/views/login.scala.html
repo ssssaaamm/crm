@@ -16,7 +16,18 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-lg-12">
-						<form id="login-form" action="@routes.HomeController.login" method="post" role="form" style="display: block;">
+						@if(flash.containsKey("no_registered")){
+							<div class="alert alert-danger" role="alert">
+								<p>@flash.get("no_registered")</p>
+							</div>
+						}
+						
+						@if(flash.containsKey("no_password")){
+							<div class="alert alert-warning" role="alert">
+								<p>@flash.get("no_password")</p>
+							</div>
+						}
+						<form id="login-form" action="@routes.HomeController.login_post" method="post" role="form" style="display: block;">
 							<div class="form-group">
 								<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
 							</div>

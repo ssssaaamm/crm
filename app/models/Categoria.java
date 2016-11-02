@@ -26,26 +26,22 @@ public class Categoria extends Model{
 
 	//productos que pertenecen a esta categoria
 	@OneToMany(mappedBy="categoria")
-  	List<Producto> productos;
+	List<Producto> productos;
 
-  	//ofertas que coinciden (en cuanto a publicacion) con esta categoria
-  	@ManyToMany(mappedBy="categorias")
-  	List<Oferta> ofertas;
+	//ofertas que coinciden (en cuanto a publicacion) con esta categoria
+	@OneToMany(mappedBy="categoria")
+	List<AplicacionOferta> aplicaciones_oferta;
 
-  	//usuarios que coinciden (en cuanto a gustos) con esta categoria
-  	@ManyToMany(mappedBy="gustos")
-  	List<Usuario> usuarios;
-
-    public static Finder<Long, Categoria> find = new Finder<Long,Categoria>(Categoria.class);
+  public static Finder<Long, Categoria> find = new Finder<Long,Categoria>(Categoria.class);
 
 
-    public static Map<String,String> options(){
-    	LinkedHashMap<String,String> opciones = new LinkedHashMap<String,String>();
-    	//List<Categoria> categorias=Categoria.find.orderBy("nombre").findList();
-    	for(Categoria c : Categoria.find.orderBy("nombre").findList()){
-    		opciones.put(c.id.toString(), c.nombre);
-    	}
-    	return opciones;
-    }
+  public static Map<String,String> options(){
+  	LinkedHashMap<String,String> opciones = new LinkedHashMap<String,String>();
+  	//List<Categoria> categorias=Categoria.find.orderBy("nombre").findList();
+  	for(Categoria c : Categoria.find.orderBy("nombre").findList()){
+  		opciones.put(c.id.toString(), c.nombre);
+  	}
+  	return opciones;
+  }
 
 }

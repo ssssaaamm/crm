@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String, opcion: String, descripcion: String, activo: String)(content: Html)
+@(title: String, opcion: String, descripcion: String, activo: String, css: Html = Html(""), js: Html = Html(""))(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +39,7 @@
                 <ul class="nav navbar-right top-nav">
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @session().get("conected") <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @session().get("username") <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="divider"></li>
                             <li>
