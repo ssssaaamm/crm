@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/samuel/Desarrollo/crm/conf/routes
-// @DATE:Tue Nov 01 21:48:51 CST 2016
+// @DATE:Thu Nov 03 00:44:13 CST 2016
 
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }
@@ -13,14 +13,14 @@ import _root_.play.libs.F
 // @LINE:6
 package controllers {
 
-  // @LINE:47
+  // @LINE:49
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:47
+    // @LINE:49
     def versioned(file:Asset): Call = {
       implicit val _rrc = new ReverseRouteContext(Map(("path", "/public")))
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[Asset]].unbind("file", file))
@@ -28,14 +28,14 @@ package controllers {
   
   }
 
-  // @LINE:41
+  // @LINE:43
   class ReverseCountController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:41
+    // @LINE:43
     def count(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "count")
@@ -120,21 +120,33 @@ package controllers {
     }
   
     // @LINE:35
+    def empleado_edit(id:Long): Call = {
+      import ReverseRouteContext.empty
+      Call("POST", _prefix + { _defaultPrefix } + "admin/empleados/edit/" + implicitly[PathBindable[Long]].unbind("id", id))
+    }
+  
+    // @LINE:37
     def producto_new(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "admin/productos/new")
     }
   
+    // @LINE:36
+    def empleado_remove(id:Long): Call = {
+      import ReverseRouteContext.empty
+      Call("POST", _prefix + { _defaultPrefix } + "admin/empleados/remove/" + implicitly[PathBindable[Long]].unbind("id", id))
+    }
+  
   }
 
-  // @LINE:43
+  // @LINE:45
   class ReverseAsyncController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:43
+    // @LINE:45
     def message(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "message")

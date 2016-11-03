@@ -1,4 +1,4 @@
-[0m[[31merror[0m] [0m/home/samuel/Desarrollo/crm/app/views/administrador/productos.scala.html:140: Expected '"' but found 'EOF'[0m
+[0m[[31merror[0m] [0m/home/samuel/Desarrollo/crm/app/views/administrador/empleados.scala.html:323: Expected '"' but found 'EOF'[0m
 [0m[[31merror[0m] [0m}[0m
 [0m[[31merror[0m] [0m ^[0m
 [0m[[31merror[0m] [0m(compile:[31mtwirlCompileTemplates[0m) Twirl compilation failed[0m

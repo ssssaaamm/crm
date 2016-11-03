@@ -102,6 +102,7 @@ public class HomeController extends Controller {
     }
 
     public Result register(){
+        
         Form<Cliente> cliente_form = Form.form(Cliente.class);
         //Form<Tarjeta> tarjeta_form = Form.form(Tarjeta.class);
     	return ok(register.render(cliente_form));
@@ -113,6 +114,11 @@ public class HomeController extends Controller {
         //dos formas de obtener los datos del formulario
         Form<Cliente> cliente_form = Form.form(Cliente.class).bindFromRequest();
         Map<String, String[]> values = request().body().asFormUrlEncoded();
+
+        if(cliente_form.hasErrors()){
+
+            return badRequest(register.render(cliente_form));
+        }
 
         //preparamos todo para guardar en la BD
         Cliente cliente = cliente_form.get();
@@ -131,7 +137,7 @@ public class HomeController extends Controller {
         cliente.save();
 
 
-
+        //obtenemos y guardamos los gustos o intereses del cliente
         for( int i =0; i<values.get("categorias[]").length; i++ ){
             Gusto g= new Gusto();
             g.categoria=Categoria.find.where().idEq(Long.valueOf(values.get("categorias[]")[i])).findUnique();
@@ -143,12 +149,7 @@ public class HomeController extends Controller {
 
 
 
-        // if(usuario_form.hasErrors() || tarjeta_form.hasErrors() ){
-        //     // if(usuario_form.get().password != values.get("password_confirm")[0]){
-        //     //     flash("wp","Passwords no coinciden");
-        //     // }
-        //     return badRequest(register.render(tarjeta_form,usuario_form));
-        // }
+        
 
         flash("registered","Usuario registrado con exito!. En 5 seg sera redirigido...");
         return redirect(routes.HomeController.register());

@@ -32,6 +32,8 @@ GET	/carretilla	controllers.ClienteController.carretilla
 GET /admin/empleados	controllers.AdministradorController.empleados
 GET	/admin/productos	controllers.AdministradorController.productos
 POST /admin/empleados/new controllers.AdministradorController.empleado_new
+POST /admin/empleados/edit/:id controllers.AdministradorController.empleado_edit(id: Long)
+POST /admin/empleados/remove/:id controllers.AdministradorController.empleado_remove(id: Long)
 POST /admin/productos/new controllers.AdministradorController.producto_new
 
 

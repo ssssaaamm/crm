@@ -16,11 +16,13 @@ public class Empleado extends Model{
 	@Id
 	public Long id;
 
+	@Constraints.Required(message="Debe ingresar el codigo")
 	public String codigo;
 
 	@Constraints.Required(message="Debe ingresar el nombre")
 	public String nombre;
 
+	@Constraints.Required(message="Debe ingresar el correo")
 	public String telefono;
 
 	@Constraints.Required(message="Debe ingresar su correo electronico")
@@ -30,8 +32,11 @@ public class Empleado extends Model{
 	@Constraints.Required(message="Debe ingresar un nick o username")
 	public String username;
 
-	@Constraints.Required(message="Debe ingresar el password")
+	@Constraints.Required(message="Debe ingresar la contraseña")
 	public String password;
+
+	@Transient
+	public String password_confirmation;
 
 	@ManyToOne
 	public TipoEmpleado tipo;
@@ -42,8 +47,19 @@ public class Empleado extends Model{
     public static Finder<Long, Empleado> find = new Finder<Long,Empleado>(Empleado.class);
 
     public Form<Empleado> getForm(){
-    	Form<Empleado> returning=Form.form(Empleado.class).fill(Empleado.find.byId(this.id));
+    	Empleado e = Empleado.find.byId(this.id);
+    	e.password_confirmation=e.password;
+    	Form<Empleado> returning=Form.form(Empleado.class).fill(e);
     	return returning;
     }
+
+    public List<ValidationError> validate(){
+	   List<ValidationError> errors = new ArrayList<ValidationError>();
+	   if(!password.equals(password_confirmation)){
+	       errors.add(new ValidationError("password_confirmation", "Las contraseñas deben ser iguales"));
+	    }
+	    return errors.isEmpty() ? null : errors;
+	}
+
 
 }
