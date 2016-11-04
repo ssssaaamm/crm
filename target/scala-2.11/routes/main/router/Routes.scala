@@ -1,7 +1,12 @@
 
 // @GENERATOR:play-routes-compiler
+<<<<<<< HEAD
 // @SOURCE:/home/samuel/Desarrollo/crm/conf/routes
 // @DATE:Thu Nov 03 23:24:47 CST 2016
+=======
+// @SOURCE:/home/sarahi/crm/conf/routes
+// @DATE:Thu Nov 03 22:47:22 CST 2016
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
 
 package router
 
@@ -25,6 +30,7 @@ class Routes(
   // @LINE:28
   AgenteMarketingController_0: controllers.AgenteMarketingController,
   // @LINE:32
+<<<<<<< HEAD
   AdministradorController_4: controllers.AdministradorController,
   // @LINE:43
   CountController_1: controllers.CountController,
@@ -32,6 +38,15 @@ class Routes(
   AsyncController_3: controllers.AsyncController,
   // @LINE:49
   Assets_5: controllers.Assets,
+=======
+  AdministradorController_3: controllers.AdministradorController,
+  // @LINE:45
+  CountController_0: controllers.CountController,
+  // @LINE:47
+  AsyncController_2: controllers.AsyncController,
+  // @LINE:51
+  Assets_4: controllers.Assets,
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
   val prefix: String
 ) extends GeneratedRouter {
 
@@ -46,6 +61,7 @@ class Routes(
     // @LINE:28
     AgenteMarketingController_0: controllers.AgenteMarketingController,
     // @LINE:32
+<<<<<<< HEAD
     AdministradorController_4: controllers.AdministradorController,
     // @LINE:43
     CountController_1: controllers.CountController,
@@ -54,6 +70,16 @@ class Routes(
     // @LINE:49
     Assets_5: controllers.Assets
   ) = this(errorHandler, HomeController_2, ClienteController_6, AgenteServicioController_7, AgenteMarketingController_0, AdministradorController_4, CountController_1, AsyncController_3, Assets_5, "/")
+=======
+    AdministradorController_3: controllers.AdministradorController,
+    // @LINE:45
+    CountController_0: controllers.CountController,
+    // @LINE:47
+    AsyncController_2: controllers.AsyncController,
+    // @LINE:51
+    Assets_4: controllers.Assets
+  ) = this(errorHandler, HomeController_1, ClienteController_5, AdministradorController_3, CountController_0, AsyncController_2, Assets_4, "/")
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
 
   import ReverseRouteContext.empty
 
@@ -83,9 +109,11 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/empleados""", """controllers.AdministradorController.empleados"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/productos""", """controllers.AdministradorController.productos"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/empleados/new""", """controllers.AdministradorController.empleado_new"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/empleados/edit/""" + "$" + """id<[^/]+>""", """controllers.AdministradorController.empleado_edit(id:Long)"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/empleados/remove/""" + "$" + """id<[^/]+>""", """controllers.AdministradorController.empleado_remove(id:Long)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/productos/new""", """controllers.AdministradorController.producto_new"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/empleados/edit/""" + "$" + """id<[^/]+>""", """controllers.AdministradorController.empleado_edit(id:Long)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/productos/edit/""" + "$" + """id<[^/]+>""", """controllers.AdministradorController.producto_edit(id:Long)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/empleados/remove/""" + "$" + """id<[^/]+>""", """controllers.AdministradorController.empleado_remove(id:Long)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """admin/productos/remove/""" + "$" + """id<[^/]+>""", """controllers.AdministradorController.producto_remove(id:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """count""", """controllers.CountController.count"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """message""", """controllers.AsyncController.message"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
@@ -369,45 +397,18 @@ class Routes(
   )
 
   // @LINE:35
+<<<<<<< HEAD
   private[this] lazy val controllers_AdministradorController_empleado_edit16_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("admin/empleados/edit/"), DynamicPart("id", """[^/]+""",true)))
   )
   private[this] lazy val controllers_AdministradorController_empleado_edit16_invoker = createInvoker(
     AdministradorController_4.empleado_edit(fakeValue[Long]),
-    HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.AdministradorController",
-      "empleado_edit",
-      Seq(classOf[Long]),
-      "POST",
-      """""",
-      this.prefix + """admin/empleados/edit/""" + "$" + """id<[^/]+>"""
-    )
-  )
-
-  // @LINE:36
-  private[this] lazy val controllers_AdministradorController_empleado_remove17_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("admin/empleados/remove/"), DynamicPart("id", """[^/]+""",true)))
-  )
-  private[this] lazy val controllers_AdministradorController_empleado_remove17_invoker = createInvoker(
-    AdministradorController_4.empleado_remove(fakeValue[Long]),
-    HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.AdministradorController",
-      "empleado_remove",
-      Seq(classOf[Long]),
-      "POST",
-      """""",
-      this.prefix + """admin/empleados/remove/""" + "$" + """id<[^/]+>"""
-    )
-  )
-
-  // @LINE:37
-  private[this] lazy val controllers_AdministradorController_producto_new18_route = Route("POST",
+=======
+  private[this] lazy val controllers_AdministradorController_producto_new14_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("admin/productos/new")))
   )
-  private[this] lazy val controllers_AdministradorController_producto_new18_invoker = createInvoker(
-    AdministradorController_4.producto_new,
+  private[this] lazy val controllers_AdministradorController_producto_new14_invoker = createInvoker(
+    AdministradorController_3.producto_new,
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.AdministradorController",
@@ -419,12 +420,106 @@ class Routes(
     )
   )
 
+  // @LINE:36
+  private[this] lazy val controllers_AdministradorController_empleado_edit15_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("admin/empleados/edit/"), DynamicPart("id", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_AdministradorController_empleado_edit15_invoker = createInvoker(
+    AdministradorController_3.empleado_edit(fakeValue[Long]),
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.AdministradorController",
+      "empleado_edit",
+      Seq(classOf[Long]),
+      "POST",
+      """""",
+      this.prefix + """admin/empleados/edit/""" + "$" + """id<[^/]+>"""
+    )
+  )
+
+<<<<<<< HEAD
+  // @LINE:36
+=======
+  // @LINE:37
+  private[this] lazy val controllers_AdministradorController_producto_edit16_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("admin/productos/edit/"), DynamicPart("id", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_AdministradorController_producto_edit16_invoker = createInvoker(
+    AdministradorController_3.producto_edit(fakeValue[Long]),
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.AdministradorController",
+      "producto_edit",
+      Seq(classOf[Long]),
+      "POST",
+      """""",
+      this.prefix + """admin/productos/edit/""" + "$" + """id<[^/]+>"""
+    )
+  )
+
+  // @LINE:38
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
+  private[this] lazy val controllers_AdministradorController_empleado_remove17_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("admin/empleados/remove/"), DynamicPart("id", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_AdministradorController_empleado_remove17_invoker = createInvoker(
+<<<<<<< HEAD
+    AdministradorController_4.empleado_remove(fakeValue[Long]),
+=======
+    AdministradorController_3.empleado_remove(fakeValue[Long]),
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.AdministradorController",
+      "empleado_remove",
+      Seq(classOf[Long]),
+      "POST",
+      """""",
+      this.prefix + """admin/empleados/remove/""" + "$" + """id<[^/]+>"""
+    )
+  )
+
+<<<<<<< HEAD
+  // @LINE:37
+  private[this] lazy val controllers_AdministradorController_producto_new18_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("admin/productos/new")))
+  )
+  private[this] lazy val controllers_AdministradorController_producto_new18_invoker = createInvoker(
+    AdministradorController_4.producto_new,
+=======
+  // @LINE:39
+  private[this] lazy val controllers_AdministradorController_producto_remove18_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("admin/productos/remove/"), DynamicPart("id", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_AdministradorController_producto_remove18_invoker = createInvoker(
+    AdministradorController_3.producto_remove(fakeValue[Long]),
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
+    HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.AdministradorController",
+      "producto_remove",
+      Seq(classOf[Long]),
+      "POST",
+      """""",
+      this.prefix + """admin/productos/remove/""" + "$" + """id<[^/]+>"""
+    )
+  )
+
+<<<<<<< HEAD
   // @LINE:43
+=======
+  // @LINE:45
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
   private[this] lazy val controllers_CountController_count19_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("count")))
   )
   private[this] lazy val controllers_CountController_count19_invoker = createInvoker(
+<<<<<<< HEAD
     CountController_1.count,
+=======
+    CountController_0.count,
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.CountController",
@@ -436,12 +531,20 @@ class Routes(
     )
   )
 
+<<<<<<< HEAD
   // @LINE:45
+=======
+  // @LINE:47
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
   private[this] lazy val controllers_AsyncController_message20_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("message")))
   )
   private[this] lazy val controllers_AsyncController_message20_invoker = createInvoker(
+<<<<<<< HEAD
     AsyncController_3.message,
+=======
+    AsyncController_2.message,
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.AsyncController",
@@ -453,12 +556,20 @@ class Routes(
     )
   )
 
+<<<<<<< HEAD
   // @LINE:49
+=======
+  // @LINE:51
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
   private[this] lazy val controllers_Assets_versioned21_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
   private[this] lazy val controllers_Assets_versioned21_invoker = createInvoker(
+<<<<<<< HEAD
     Assets_5.versioned(fakeValue[String], fakeValue[Asset]),
+=======
+    Assets_4.versioned(fakeValue[String], fakeValue[Asset]),
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
     HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Assets",
@@ -570,6 +681,7 @@ class Routes(
       }
   
     // @LINE:35
+<<<<<<< HEAD
     case controllers_AdministradorController_empleado_edit16_route(params) =>
       call(params.fromPath[Long]("id", None)) { (id) =>
         controllers_AdministradorController_empleado_edit16_invoker.call(AdministradorController_4.empleado_edit(id))
@@ -603,6 +715,53 @@ class Routes(
     case controllers_Assets_versioned21_route(params) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
         controllers_Assets_versioned21_invoker.call(Assets_5.versioned(path, file))
+=======
+    case controllers_AdministradorController_producto_new14_route(params) =>
+      call { 
+        controllers_AdministradorController_producto_new14_invoker.call(AdministradorController_3.producto_new)
+      }
+  
+    // @LINE:36
+    case controllers_AdministradorController_empleado_edit15_route(params) =>
+      call(params.fromPath[Long]("id", None)) { (id) =>
+        controllers_AdministradorController_empleado_edit15_invoker.call(AdministradorController_3.empleado_edit(id))
+      }
+  
+    // @LINE:37
+    case controllers_AdministradorController_producto_edit16_route(params) =>
+      call(params.fromPath[Long]("id", None)) { (id) =>
+        controllers_AdministradorController_producto_edit16_invoker.call(AdministradorController_3.producto_edit(id))
+      }
+  
+    // @LINE:38
+    case controllers_AdministradorController_empleado_remove17_route(params) =>
+      call(params.fromPath[Long]("id", None)) { (id) =>
+        controllers_AdministradorController_empleado_remove17_invoker.call(AdministradorController_3.empleado_remove(id))
+      }
+  
+    // @LINE:39
+    case controllers_AdministradorController_producto_remove18_route(params) =>
+      call(params.fromPath[Long]("id", None)) { (id) =>
+        controllers_AdministradorController_producto_remove18_invoker.call(AdministradorController_3.producto_remove(id))
+      }
+  
+    // @LINE:45
+    case controllers_CountController_count19_route(params) =>
+      call { 
+        controllers_CountController_count19_invoker.call(CountController_0.count)
+      }
+  
+    // @LINE:47
+    case controllers_AsyncController_message20_route(params) =>
+      call { 
+        controllers_AsyncController_message20_invoker.call(AsyncController_2.message)
+      }
+  
+    // @LINE:51
+    case controllers_Assets_versioned21_route(params) =>
+      call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
+        controllers_Assets_versioned21_invoker.call(Assets_4.versioned(path, file))
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
       }
   }
 }

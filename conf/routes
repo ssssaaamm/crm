@@ -31,10 +31,12 @@ GET	/agente_m/ofertas	controllers.AgenteMarketingController.ofertas
 # Rutas del AdministradorController
 GET /admin/empleados	controllers.AdministradorController.empleados
 GET	/admin/productos	controllers.AdministradorController.productos
-POST /admin/empleados/new controllers.AdministradorController.empleado_new
-POST /admin/empleados/edit/:id controllers.AdministradorController.empleado_edit(id: Long)
-POST /admin/empleados/remove/:id controllers.AdministradorController.empleado_remove(id: Long)
+POST /aes responsable de fusionar esdmin/empleados/new controllers.AdministradorController.empleado_new
 POST /admin/productos/new controllers.AdministradorController.producto_new
+POST /admin/empleados/edit/:id controllers.AdministradorController.empleado_edit(id: Long)
+POST /admin/productos/edit/:id controllers.AdministradorController.producto_edit(id: Long)
+POST /admin/empleados/remove/:id controllers.AdministradorController.empleado_remove(id: Long)
+POST /admin/productos/remove/:id controllers.AdministradorController.producto_remove(id: Long)
 
 
 

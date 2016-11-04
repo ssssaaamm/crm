@@ -1,7 +1,12 @@
 
 // @GENERATOR:play-routes-compiler
+<<<<<<< HEAD
 // @SOURCE:/home/samuel/Desarrollo/crm/conf/routes
 // @DATE:Thu Nov 03 23:24:47 CST 2016
+=======
+// @SOURCE:/home/sarahi/crm/conf/routes
+// @DATE:Thu Nov 03 22:47:22 CST 2016
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
 
 import play.api.routing.JavaScriptReverseRoute
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
@@ -15,7 +20,7 @@ import _root_.play.libs.F
 package controllers.javascript {
   import ReverseRouteContext.empty
 
-  // @LINE:49
+  // @LINE:51
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -23,7 +28,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:49
+    // @LINE:51
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """
@@ -35,6 +40,7 @@ package controllers.javascript {
   
   }
 
+<<<<<<< HEAD
   // @LINE:24
   class ReverseAgenteServicioController(_prefix: => String) {
 
@@ -56,6 +62,9 @@ package controllers.javascript {
   }
 
   // @LINE:43
+=======
+  // @LINE:45
+>>>>>>> dadc29268f4be7395842d685b336b675c4282237
   class ReverseCountController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -63,7 +72,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:43
+    // @LINE:45
     def count: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.CountController.count",
       """
@@ -173,6 +182,16 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:37
+    def producto_edit: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AdministradorController.producto_edit",
+      """
+        function(id0) {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/productos/edit/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id0)})
+        }
+      """
+    )
+  
     // @LINE:33
     def productos: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AdministradorController.productos",
@@ -193,7 +212,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:35
+    // @LINE:36
     def empleado_edit: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AdministradorController.empleado_edit",
       """
@@ -203,7 +222,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:37
+    // @LINE:35
     def producto_new: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AdministradorController.producto_new",
       """
@@ -213,7 +232,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:36
+    // @LINE:38
     def empleado_remove: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AdministradorController.empleado_remove",
       """
@@ -223,9 +242,19 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:39
+    def producto_remove: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.AdministradorController.producto_remove",
+      """
+        function(id0) {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "admin/productos/remove/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id0)})
+        }
+      """
+    )
+  
   }
 
-  // @LINE:45
+  // @LINE:47
   class ReverseAsyncController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -233,7 +262,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:45
+    // @LINE:47
     def message: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AsyncController.message",
       """

@@ -64,8 +64,8 @@ Seq[Any](format.raw/*1.20*/("""
 object register_success extends register_success_Scope0.register_success
               /*
                   -- GENERATED --
-                  DATE: Tue Nov 01 10:26:41 CST 2016
-                  SOURCE: /home/samuel/Desarrollo/crm/app/views/register_success.scala.html
+                  DATE: Thu Nov 03 21:36:24 CST 2016
+                  SOURCE: /home/sarahi/crm/app/views/register_success.scala.html
                   HASH: cc3837eaa1c6775316fcdffd5ada5a930c6cb3de
                   MATRIX: 767->1|863->21|872->23|951->25|979->27|1057->78|1085->79|1125->92|1169->110|1183->116|1224->137|1260->147|1288->148|1351->19|1378->172|1405->174|1442->203|1480->204|1509->206|1597->267|1626->275|1655->276
                   LINES: 27->1|31->2|31->2|33->2|34->3|35->4|35->4|36->5|36->5|36->5|36->5|37->6|37->6|40->1|41->8|42->9|42->9|42->9|43->10|44->11|44->11|44->11
