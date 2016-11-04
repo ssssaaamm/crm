@@ -20,12 +20,12 @@ GET	/incidentes	controllers.ClienteController.incidentes
 GET	/carretilla	controllers.ClienteController.carretilla
 
 
-# Rutas del AsistenteController
-#GET	/productos	controllers.AsistenteController.home
+# Rutas del AgenteServicioController
+GET	/agente_s/incidencias	controllers.AgenteServicioController.incidencias
 
 
-# Rutas del GerenteController
-#GET	/productos	controllers.GerenteController.home
+# Rutas del AgenteServicioController
+GET	/agente_m/ofertas	controllers.AgenteMarketingController.ofertas
 
 
 # Rutas del AdministradorController

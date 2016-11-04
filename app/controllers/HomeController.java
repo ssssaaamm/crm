@@ -82,14 +82,29 @@ public class HomeController extends Controller {
                 }
             }else{
                 if( e.password.equals(password) ){
-                    return ok("empleado registrado y password concuerda");
+                    //return ok("empleado registrado y password concuerda");
+                    if(e.tipo.codigo == 1){
+                        session("username",username);
+                        return redirect(routes.AdministradorController.empleados());
+                    }
+
+                    if(e.tipo.codigo == 2){
+                        session("username",username);
+                        return redirect(routes.AgenteServicioController.incidencias());
+                    }
+
+                    if(e.tipo.codigo == 3){
+                        session("username",username);
+                        return redirect(routes.AgenteMarketingController.ofertas());
+                    }
+
                 }else{
                     return ok("empleado registrado y password no concuerda");
                 }
             }
         }
 
-        //return ok(login.render());
+        return null;
 
         //session("conected","ssssaaamm");
         //return redirect(routes.ClienteController.productos());

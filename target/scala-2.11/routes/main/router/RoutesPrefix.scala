@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/samuel/Desarrollo/crm/conf/routes
-// @DATE:Thu Nov 03 00:44:13 CST 2016
+// @DATE:Thu Nov 03 23:24:47 CST 2016
 
 
 package router {
