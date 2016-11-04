@@ -115,8 +115,8 @@ Seq[Any](_display_(/*1.2*/cliente/*1.9*/.base("Cliente CRM","Ofertas","Las mejor
 object ofertas extends ofertas_Scope0.ofertas
               /*
                   -- GENERATED --
-                  DATE: Tue Nov 01 16:50:45 CST 2016
-                  SOURCE: /home/samuel/Desarrollo/crm/app/views/cliente/ofertas.scala.html
+                  DATE: Thu Nov 03 21:36:24 CST 2016
+                  SOURCE: /home/sarahi/crm/app/views/cliente/ofertas.scala.html
                   HASH: 3f531e7f93617f70bff4469f04824b0597e36d34
                   MATRIX: 839->1|853->8|936->83|974->84|1002->86
                   LINES: 32->1|32->1|32->1|32->1|33->2

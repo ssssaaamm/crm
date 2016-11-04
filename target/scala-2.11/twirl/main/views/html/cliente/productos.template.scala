@@ -219,8 +219,8 @@ Seq[Any](_display_(/*1.2*/cliente/*1.9*/.base("Cliente CRM","Productos","Encuent
 object productos extends productos_Scope0.productos
               /*
                   -- GENERATED --
-                  DATE: Tue Nov 01 16:50:45 CST 2016
-                  SOURCE: /home/samuel/Desarrollo/crm/app/views/cliente/productos.scala.html
+                  DATE: Thu Nov 03 21:36:24 CST 2016
+                  SOURCE: /home/sarahi/crm/app/views/cliente/productos.scala.html
                   HASH: f8ab505eff125b5b4edd295c01a1eb7559d3750b
                   MATRIX: 843->1|857->8|937->80|975->81|1012->91|10491->9539
                   LINES: 32->1|32->1|32->1|32->1|33->2|201->170

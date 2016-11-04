@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/home/samuel/Desarrollo/crm/conf/routes
-// @DATE:Thu Nov 03 00:44:13 CST 2016
+// @SOURCE:/home/sarahi/crm/conf/routes
+// @DATE:Thu Nov 03 22:47:22 CST 2016
 
 import play.api.mvc.{ QueryStringBindable, PathBindable, Call, JavascriptLiteral }
 import play.core.routing.{ HandlerDef, ReverseRouteContext, queryString, dynamicString }
@@ -13,14 +13,14 @@ import _root_.play.libs.F
 // @LINE:6
 package controllers {
 
-  // @LINE:49
+  // @LINE:51
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:49
+    // @LINE:51
     def versioned(file:Asset): Call = {
       implicit val _rrc = new ReverseRouteContext(Map(("path", "/public")))
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[Asset]].unbind("file", file))
@@ -28,14 +28,14 @@ package controllers {
   
   }
 
-  // @LINE:43
+  // @LINE:45
   class ReverseCountController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:43
+    // @LINE:45
     def count(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "count")
@@ -107,6 +107,12 @@ package controllers {
       Call("POST", _prefix + { _defaultPrefix } + "admin/empleados/new")
     }
   
+    // @LINE:37
+    def producto_edit(id:Long): Call = {
+      import ReverseRouteContext.empty
+      Call("POST", _prefix + { _defaultPrefix } + "admin/productos/edit/" + implicitly[PathBindable[Long]].unbind("id", id))
+    }
+  
     // @LINE:33
     def productos(): Call = {
       import ReverseRouteContext.empty
@@ -119,34 +125,40 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "admin/empleados")
     }
   
-    // @LINE:35
+    // @LINE:36
     def empleado_edit(id:Long): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "admin/empleados/edit/" + implicitly[PathBindable[Long]].unbind("id", id))
     }
   
-    // @LINE:37
+    // @LINE:35
     def producto_new(): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "admin/productos/new")
     }
   
-    // @LINE:36
+    // @LINE:38
     def empleado_remove(id:Long): Call = {
       import ReverseRouteContext.empty
       Call("POST", _prefix + { _defaultPrefix } + "admin/empleados/remove/" + implicitly[PathBindable[Long]].unbind("id", id))
     }
   
+    // @LINE:39
+    def producto_remove(id:Long): Call = {
+      import ReverseRouteContext.empty
+      Call("POST", _prefix + { _defaultPrefix } + "admin/productos/remove/" + implicitly[PathBindable[Long]].unbind("id", id))
+    }
+  
   }
 
-  // @LINE:45
+  // @LINE:47
   class ReverseAsyncController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:45
+    // @LINE:47
     def message(): Call = {
       import ReverseRouteContext.empty
       Call("GET", _prefix + { _defaultPrefix } + "message")

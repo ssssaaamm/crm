@@ -7,6 +7,7 @@ import javax.persistence.*;
 import play.db.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
+import play.data.*;
 
 import com.avaje.ebean.*;
 
@@ -39,5 +40,11 @@ public class Producto extends Model{
 	public byte[] imagen;
 
     public static Finder<Long, Producto> find = new Finder<Long,Producto>(Producto.class);
+
+    public Form<Producto> getForm(){
+    	Producto p = Producto.find.byId(this.id);
+    	Form<Producto> returning=Form.form(Producto.class).fill(p);
+    	return returning;
+    }
 
 }

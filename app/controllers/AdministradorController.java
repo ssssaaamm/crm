@@ -117,18 +117,53 @@ public class AdministradorController extends Controller {
 
     public Result productos() {
     	Form<Producto> producto_form = Form.form(Producto.class);
+        List<Producto> productos_list = Producto.find.findList();
+        
+        return ok(productos.render(producto_form,productos_list));
 
-		return ok(productos.render(producto_form));    
+
+	  
     }
 
 
 
     public Result producto_new() {
     	Form<Producto> producto_form = Form.form(Producto.class);
-		return ok(productos.render(producto_form));   
+        List<Producto> productos_list = Producto.find.findList();
+		return ok(productos.render(producto_form,productos_list));   
     }
 
+ //edit
+    public Result producto_edit(Long id) {
 
+        Form<Producto> producto_form = Form.form(Producto.class).bindFromRequest();
+        List<Producto> productos_list = Producto.find.findList();
+
+        //Si hay errores siempre los retornara
+        if( producto_form.hasErrors() ){
+            flash("modal","mod-edit-"+id.toString());
+            return badRequest(productos.render(producto_form,productos_list));
+        }
+
+        Producto prod = Producto.find.byId(id);
+
+        if ( prod != null) {
+            prod.codigo=producto_form.get().codigo;
+            prod.nombre=producto_form.get().nombre;
+            prod.descripcion=producto_form.get().descripcion;
+            prod.precio=producto_form.get().precio;
+            prod.existencias=producto_form.get().existencias;
+            prod.categoria.id=producto_form.get().categoria.id;
+
+            prod.update();
+        }        
+
+        flash("exito","Operacion exitosa!");
+
+        return redirect(routes.AdministradorController.productos());
+        //return ok("hola "+id.toString());
+        //return ok(empleados.render(empleado_form));   
+    }
 
 
   //   public Result empleados() {
@@ -139,4 +174,16 @@ public class AdministradorController extends Controller {
 		// }     
   //   }
 
-}
+
+
+ //delete
+    public Result producto_remove(Long id){
+        Producto prod = Producto.find.byId(id);
+        if(prod != null){
+            prod.delete();
+            flash("exito","Operacion exitosa!");
+            return redirect(routes.AdministradorController.productos());
+        }
+        return redirect(routes.AdministradorController.productos());
+    }
+}//cierre de clase

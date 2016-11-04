@@ -220,8 +220,8 @@ Seq[Any](_display_(/*1.2*/base("Home CRM")/*1.18*/{_display_(Seq[Any](format.raw
 object index extends index_Scope0.index
               /*
                   -- GENERATED --
-                  DATE: Tue Nov 01 10:26:41 CST 2016
-                  SOURCE: /home/samuel/Desarrollo/crm/app/views/index.scala.html
+                  DATE: Thu Nov 03 21:36:24 CST 2016
+                  SOURCE: /home/sarahi/crm/app/views/index.scala.html
                   HASH: e73e50afb22dcd6a882b16e02825158446e1c590
                   MATRIX: 827->1|851->17|889->18|922->25
                   LINES: 32->1|32->1|32->1|35->4

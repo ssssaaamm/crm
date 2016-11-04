@@ -118,8 +118,8 @@ Seq[Any](_display_(/*1.2*/cliente/*1.9*/.base("Cliente CRM","Carretilla","Articu
 object carretilla extends carretilla_Scope0.carretilla
               /*
                   -- GENERATED --
-                  DATE: Tue Nov 01 16:50:45 CST 2016
-                  SOURCE: /home/samuel/Desarrollo/crm/app/views/cliente/carretilla.scala.html
+                  DATE: Thu Nov 03 21:36:24 CST 2016
+                  SOURCE: /home/sarahi/crm/app/views/cliente/carretilla.scala.html
                   HASH: 773a211c51120e8f9e59b3568da8ea56040c575c
                   MATRIX: 845->1|859->8|935->76|973->77|1004->82
                   LINES: 32->1|32->1|32->1|32->1|33->2
